@@ -105,3 +105,82 @@ print(cat.sound())
 print(cow.sound())
 
 
+# 4
+Multi-level inheritance can be defined as where a subclass inherits from the single subclass and then another subclass inherits from the first subclass. By this, the second subclass can access all the attributes and methods from both the first subclass and the superclass.
+
+Let's understand with an example showing multi-level inheritance.
+
+# Base Class
+class GrandPa:
+    def __init__(self):
+        self.age = 100
+
+# Derived CLass
+class Parent(GrandPa):
+    def __init__(self):
+        self.name = "Geek"
+        GrandPa.__init__(self)
+
+# Derived Class
+class GrandChild(Parent):
+    def __init__(self):
+        self.hobby = "Gaming"
+        Parent.__init__(self)
+
+    def display(self):
+        print("Grandpa:", self.age)
+        print("Parent:", self.name)
+        print("Grandchild:", self.hobby)
+
+obj = GrandChild()
+obj.display()
+In the above code, the subclass Parent inherits from the superclass GrandPa and now the first subclass Parent has access to the methods of the superclass GrandPa.
+
+Then another subclass GrandChild inherited from the first subclass Parent and it has access to the methods that both the first subclass and superclass have.
+
+
+Grandpa: 100
+Parent: Geek
+Grandchild: Gaming
+
+
+# 5 
+
+Inner functions, as the name suggests, are Python functions that are created inside other Python functions. 
+Besides its own scope, the inner function has access to the objects available in the scope of the outer 
+function. The inner function can be termed as a single Python object with its own data and variables. 
+This inner function is protected by the outer function and cannot be called or referred from the global scope.
+ This way the inner function acts as a hidden entity that works within the boundaries of outer function only 
+ and global scope remains unaware of it. This process is also known as “encapsulation” in programming. Here 
+ is an example of a nested function in Python.
+
+ def visibile_outer_function(name):
+    def  hidden_inner_function():
+        print (name)
+    hidden_inner_function()
+
+visibile_outer_function("John")
+hidden_inner_function()
+
+The use cases of inner functions
+
+The outer function takes one mandatory argument called “name”. The inner function has access to the scope of 
+the outer function so it can make use of the name variable. A call to the inner function is then made in the 
+outer function. Next, a call to both inner and outer functions is made in the global scope
+
+Data Validation: When validating input data within a class method, you can define an inner function to 
+perform the validation logic. This helps in separating the validation code from the main method, making 
+it more readable and organized
+
+Sorting or Filtering: When sorting or filtering a collection of objects within a method, you can define an 
+inner function to specify the sorting or filtering criteria. This improves code readability and allows you 
+to encapsulate the specific sorting or filtering logic.
+
+
+Callback Functions: When working with callback functions, you can define an inner function to handle the 
+callback logic. This keeps the main method clean and focused on its primary purpose. It also allows you 
+to reuse the callback function within multiple methods if needed
+
+Complex Calculations: When a method involves complex calculations or multiple steps, you can break down 
+the process into smaller subtasks using inner functions. Each inner function can handle a specific 
+calculation or step, improving code organization and readability.
